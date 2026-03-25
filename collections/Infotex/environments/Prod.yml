@@ -3,6 +3,6 @@ variables:
   - name: host
     value: http://10.105.106.6:43833
   - name: userName
-    value: "{{process.env.userName}}"
+    value: "{{process.env.prod_userName}}"
   - secret: true
     name: password
