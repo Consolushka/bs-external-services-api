@@ -1,0 +1,29 @@
+info:
+  name: 4.2	Отправка запроса
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{host}}/api/service/minkomsvyaz/dp/issued-person-permissions"
+  body:
+    type: json
+    data: |-
+      {
+          "permStatus": "A",
+          "personData": {
+              "oid": "1019189615"
+          }
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: bru.setEnvVar("activePermissionsRequestUuid", res.body.id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

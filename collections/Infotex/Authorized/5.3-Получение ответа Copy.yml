@@ -1,0 +1,19 @@
+info:
+  name: 5.3	Получение ответа Copy
+  type: http
+  seq: 9
+
+http:
+  method: GET
+  url: http://10.105.106.6:43833/api/service4e9c3788-213c-11f1-b3d7-02420a0b0c0e/attachment/id_42f3c3c3-9692-4465-9efb-399680127775.zip
+  headers:
+    - name: Authorization
+      value: Token 0b64b2e4-b74d-42e7-b166-c64686027df5
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

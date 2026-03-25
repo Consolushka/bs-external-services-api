@@ -1,0 +1,120 @@
+info:
+  name: 3.2	Создать поток работ по идентификации и получению данных ЦП
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{host}}/api/esia-auth/create"
+  body:
+    type: json
+    data: |-
+      {
+          "scopes": [
+              "openid"
+          ],
+          "redirect_url": "http://0.0.0.0",
+          "raw_type": false,
+          "permissions": [
+              {
+                  "sysname": "CREDIT",
+                  "scopes": [
+                      {
+                          "sysname": "fullname"
+                      },
+                      {
+                          "sysname": "birthdate"
+                      },
+                      {
+                          "sysname": "birthplace"
+                      },
+                      {
+                          "sysname": "gender"
+                      },
+                      {
+                          "sysname": "snils"
+                      },
+                      {
+                          "sysname": "inn"
+                      },
+                      {
+                          "sysname": "addresses"
+                      },
+                      {
+                          "sysname": "electronic_workbook"
+                      }
+                  ],
+                  "purposes": [
+                      {
+                          "sysname": "CREDIT"
+                      }
+                  ],
+                  "actions": [
+                      {
+                          "sysname": "ALL_ACTIONS_TO_DATA"
+                      }
+                  ]
+              },
+              {
+                  "sysname": "FINANCIAL_NONFIN_SERVICES",
+                  "scopes": [
+                      {
+                          "sysname": "fullname"
+                      },
+                      {
+                          "sysname": "birthdate"
+                      },
+                      {
+                          "sysname": "birthplace"
+                      },
+                      {
+                          "sysname": "gender"
+                      },
+                      {
+                          "sysname": "snils"
+                      },
+                      {
+                          "sysname": "inn"
+                      },
+                      {
+                          "sysname": "addresses"
+                      },
+                      {
+                          "sysname": "electronic_workbook"
+                      }
+                  ],
+                  "purposes": [
+                      {
+                          "sysname": "FINANCIAL_NONFIN_SERVICES"
+                      }
+                  ],
+                  "actions": [
+                      {
+                          "sysname": "ALL_ACTIONS_TO_DATA"
+                      }
+                  ]
+              }
+          ],
+          "state": "{{activeState}}"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: before-request
+      code: |-
+        // Generate a v4 UUID
+        const { v4: uuidv4 } = require('uuid');
+        const myUuid = uuidv4();
+
+        // Сохраняем его в переменную активного окружения (Environment)
+        bru.setEnvVar("activeState", myUuid);
+
+        // Опционально: выводим в консоль (Ctrl+Alt+C), чтобы проверить
+        console.log("Generated UUID:", myUuid);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

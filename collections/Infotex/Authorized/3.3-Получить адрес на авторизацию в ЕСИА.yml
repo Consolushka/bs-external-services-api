@@ -1,0 +1,24 @@
+info:
+  name: 3.3	Получить адрес на авторизацию в ЕСИА
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{host}}/api/esia-auth/"
+  headers:
+    - name: Authorization
+      value: Token 515afe4b-0d87-44c9-b66e-de1c6da2dd52
+  body:
+    type: json
+    data: |-
+      {
+          "state": "{{activeState}}"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

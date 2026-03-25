@@ -1,0 +1,12 @@
+opencollection: 1.0.0
+info:
+  name: "BrainySoft External services"
+  type: workspace
+
+collections:
+  - name: "Infotex"
+    path: "collections/Infotex"
+
+specs:
+
+docs: ''

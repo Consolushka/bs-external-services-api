@@ -1,0 +1,25 @@
+opencollection: 1.0.0
+
+info:
+  name: Infotex
+
+request:
+  variables:
+    - name: prod_domain
+      value: ""
+    - name: prod_username
+      value: ""
+    - name: prod_password
+      value: ""
+    - name: stage_domain
+      value: ""
+    - name: stage_username
+      value: ""
+    - name: stage_password
+      value: ""
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git

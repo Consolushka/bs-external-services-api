@@ -1,0 +1,24 @@
+info:
+  name: Client info
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: http://10.105.106.6:43833/api/esia-auth/client-info
+  headers:
+    - name: Authorization
+      value: Token dbfd690c-2399-434f-92bc-5f3412c79003
+  body:
+    type: json
+    data: |-
+      {
+          "state": "{{activeState}}"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

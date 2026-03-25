@@ -1,0 +1,36 @@
+info:
+  name: 5.2	Отправка запроса
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{host}}/api/service/minkomsvyaz/dp/receiving-personal-data-documents"
+  body:
+    type: json
+    data: |-
+      {
+          "registryRecords": [
+              {
+                  "recordId": 1,
+                  "dataType": "ELECTRONIC_WORKBOOK",
+                  "force": true,
+                  "idPermission": "616030559",
+                  "personData": {
+                      "oid": "1019189615"
+                  }
+              }
+          ]
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: bru.setEnvVar("activeDataTypesRequestUuid", res.body.id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

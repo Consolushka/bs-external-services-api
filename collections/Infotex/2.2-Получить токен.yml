@@ -1,0 +1,36 @@
+info:
+  name: 2.2	Получить токен
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{host}}/api/auth"
+  body:
+    type: json
+    data: |-
+      {
+          "username": "{{userName}}",
+          "password": "{{password}}"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var jsonData = res.getBody();
+
+        // Check if the expected data exists in the response
+        if (jsonData.token) {
+            // Set the "Token" environment variable with the value from the response
+            bru.setEnvVar("Token", jsonData.token);
+        } else {
+            console.log("Token not found in the response");
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
