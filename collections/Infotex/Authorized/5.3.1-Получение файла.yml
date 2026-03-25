@@ -1,5 +1,5 @@
 info:
-  name: 5.3	Получение ответа Copy
+  name: 5.3.1	Получение файла
   type: http
   seq: 9
 
