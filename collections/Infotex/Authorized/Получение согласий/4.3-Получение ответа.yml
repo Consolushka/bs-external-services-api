@@ -1,7 +1,7 @@
 info:
   name: 4.3	Получение ответа
   type: http
-  seq: 6
+  seq: 1
 
 http:
   method: GET

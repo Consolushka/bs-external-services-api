@@ -13,8 +13,8 @@ http:
           "scopes": [
               "openid"
           ],
-          "redirect_url": "http://0.0.0.0",
-          "raw_type": false,
+          "redirect_url": "https://lk.kamkombank.ru/",
+          "raw_type": true,
           "permissions": [
               {
                   "sysname": "CREDIT",
